@@ -1,0 +1,3 @@
+[submodule "classicslive-integration"]
+	path = classicslive-integration
+	url = https://github.com/classicslive/classicslive-integration
