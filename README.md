@@ -2,6 +2,8 @@
 
 This is the classicslive-integration test suite compiled for Nintendo 64, to test compatibility with strange hardware/compiler configurations and for fun.
 
+With an Expansion Pak, nearly 1MB of data can be run through the memory searcher in its current state. With enough trimming, I imagine this could fit into an emulator.
+
 <img width="1412" height="1167" alt="Screenshot_20251218_192453" src="https://github.com/user-attachments/assets/b1cf24b7-1d5e-4861-b59c-728aaa15a985" />
 
 <img width="1412" height="1167" alt="Screenshot_20251218_192837" src="https://github.com/user-attachments/assets/6193c45a-4a75-47a3-a7a3-8f52e9e8bc1b" />
