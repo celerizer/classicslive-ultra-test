@@ -1,3 +1,6 @@
 [submodule "classicslive-integration"]
 	path = classicslive-integration
 	url = https://github.com/classicslive/classicslive-integration
+[submodule "libretro-common"]
+	path = libretro-common
+	url = https://github.com/libretro/libretro-common

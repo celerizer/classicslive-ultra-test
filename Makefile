@@ -1,20 +1,33 @@
 .PHONY: all clean
 
+all: classicslive-ultra-test.z64
+
 CFLAGS += \
 	-O2 -funroll-loops \
 	-std=c89 -Wall -Wextra \
-	-DCL_TEST_REGION_SIZE=0x4000 \
-	-DCL_SEARCH_CHUNK_SIZE=0x400
+	-DCL_TEST_REGION_SIZE=0x80000 \
+	-DCL_SEARCH_CHUNK_SIZE=0x4000 \
+	-DCL_TESTS=1 \
+	-DCL_URL_HOSTNAME=\"fake-website\" \
+	-Ilibretro-common/include
+
+CL_OMIT_VFS := 1
 
 SRC_DIR = .
 BUILD_DIR = build
 
-include $(N64_INST)/include/n64.mk
+CFLAGS += -Wno-error
+CPPFLAGS += -Wno-error
+
+CLASSICS_LIVE_DIR = classicslive-integration
+
 include classicslive-integration/classicslive-integration.mk
+include $(N64_INST)/include/n64.mk
 
 src = \
 	main.c \
-	CLASSICS_LIVE_SOURCES \
+	classicslive-integration/cl_test.c \
+	$(CLASSICS_LIVE_SOURCES)
 
 $(BUILD_DIR)/classicslive-ultra-test.elf: $(src:%.c=$(BUILD_DIR)/%.o)
 
@@ -29,6 +42,8 @@ classicslive-ultra-test.z64: $(BUILD_DIR)/classicslive-ultra-test.dfs
 
 clean:
 	rm -rf $(BUILD_DIR) *.z64
+	find . -name '*.o' -delete
+	find . -name '*.a' -delete
 
 -include $(wildcard $(BUILD_DIR)/*.d)
 
